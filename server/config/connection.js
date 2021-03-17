@@ -7,4 +7,4 @@ mongoose.connect(process.env.ATLAS_URI || 'mongodb://localhost/mernshopping', {
   useFindAndModify: false
 });
 
-module.exports = mongoose.connection;
+module.exports = mongoose.connection; 
