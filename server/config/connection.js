@@ -9,4 +9,12 @@ mongoose.connect(process.env.ATLAS_URI || 'mongodb://localhost/mernshopping', {
 .then(() => console.log( 'Database Connected' ))
 .catch(err => console.log( err ))
 
+mongoose.connection.on("connected", () => {
+  console.log("Connect Success")
+})
+
+mongoose.connection.on("error", (err) => {
+  console.log("error", err)
+})
+
 module.exports = mongoose.connection;  
