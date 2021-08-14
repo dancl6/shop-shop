@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-mongoose.connect(process.env.ATLAS_URI || 'mongodb://localhost/mernshopping', {
+require('dotenv').config()
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -8,6 +8,20 @@ mongoose.connect(process.env.ATLAS_URI || 'mongodb://localhost/mernshopping', {
 })
 .then(() => console.log( 'Database Connected' ))
 .catch(err => console.log( err ))
+
+// mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@shopshopcluster.bezyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   useCreateIndex: true,
+//   useFindAndModify: false
+// })
+// .then(() => {
+//   // app.listen(3000)
+//   console.log( 'Database Connected' )
+// }).catch(err => {
+//   console.log(err)
+// })
+
 
 // mongoose.connection.on("connected", () => {
 //   console.log("Connect Success")
