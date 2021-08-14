@@ -7,7 +7,7 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/mernshopping', 
   useFindAndModify: false
 })
 .then(() => console.log( 'Database Connected' ))
-.catch(err => console.log( err ))
+.catch((error) => console.error("MongoDB connection failed:", error.message))
 
 // mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@shopshopcluster.bezyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
 //   useNewUrlParser: true,
