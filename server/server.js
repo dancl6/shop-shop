@@ -1,11 +1,13 @@
+require("dotenv").config();
 const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 
+//  password is , zqXawHVvFyLThTAy
 const { typeDefs, resolvers } = require('./schemas');
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
-
+const mongoose = require("mongoose")
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -22,13 +24,19 @@ app.use(express.json());
 // Serve up static assets
 app.use('/images', express.static(path.join(__dirname, '../client/images')));
 
+console.log("process env is:", process.env.NODE_ENV)
+// if we're in production, serve client/build as static assets
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  });
+  
+} else {
+  app.get("/", (req,res) => {
+    res.send("Api running")
+  })
 }
-
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
 
 db.once('open', () => {
   app.listen(PORT, () => {
