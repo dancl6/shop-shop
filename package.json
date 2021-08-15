@@ -9,7 +9,11 @@
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
+<<<<<<< HEAD
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && cd client && npm run build "
+=======
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && cd client && npm run build " 
+>>>>>>> 7a79078ab6ac9e283e06edcbbfa16e49fc8dbf69
   },
   "author": "",
   "license": "ISC",
