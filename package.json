@@ -4,15 +4,15 @@
   "description": "",
   "main": "server/server.js",
   "engines": {
-    "npm" : "6.14.5",
-    "node":"v12.18.1"
+    "npm": "6.14.5",
+    "node": "v12.18.1"
   },
   "scripts": {
-    "start": "if-env NODE_ENV=production  && npm run start:prod ||  npm run start:dev",
+    "seed": "if-env NODE_ENV=production  && npm run start:prod ||  npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
+    "start": "cd server && npm run seed",
     "heroku-postbuild2": "NPM_CONFIG_PRODUCTION=false npm install && cd client && npm run build ",
     "heroku-postbuild": "cd client && npm run build"
   },
